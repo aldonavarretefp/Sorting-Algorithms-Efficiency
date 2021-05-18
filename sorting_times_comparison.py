@@ -4,31 +4,26 @@ from matplotlib import pyplot as plt
 import sys
 
 
-def Swap(arr, index1, index2):
-    temp = arr[index1]  # Para alojar el valor de algun elemento de arreglo
-    arr[index1] = arr[index2]
-    arr[index2] = temp  # Hacemos el intercambio...
+def swap(arr, index_1, index_2):
+    arr[index_1],arr[index_2] = arr[index_2],arr[index_1] #Python swap.
 
 
 '''Bubble Sort O(n^2)'''
-
-
-def bubbleSort(array):  # Recibe como parametro al arreglo desordenado
-    n = len(array)
-    intercambio = False  # El intercambio al principio será falso
-    for i in range(n-1):  # Iteraremos para n-1 veces
-        for j in range(n-1-i):
-            if array[j] > array[j+1]:
-                # Invocamos a la funcion con los indices correspondientes
-                Swap(array, j, j+1)
-                intercambio = True  # Hay intercambio
-        if not intercambio:  # Si NO hay intercambio corta el proceso
+def bubbleSort(a):  
+    n = len(a)
+    intercambio = False
+    for i in range(n-1): #Iterating all array.
+        aux = n-1-i
+        for j in range(n-1-i): #It is shorter everytime, because bigger ones are going to be at the end, and so on, and so on...
+            if a[j] > a[j+1]:
+                swap(a, j, j+1)
+                intercambio = True
+        if not intercambio:
             return
 
 
+
 '''Insertion Sort O(n^2)'''
-
-
 def InsertionSort(a):
     n = len(a)
     for i in range(1, n):
