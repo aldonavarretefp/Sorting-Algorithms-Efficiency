@@ -12,9 +12,11 @@ def swap(arr, index_1, index_2):
 def bubbleSort(a):  
     n = len(a)
     intercambio = False
-    for i in range(n-1): #Iterating all array.
+    #Iterating all array.
+    for i in range(n-1): 
         aux = n-1-i
-        for j in range(n-1-i): #It is shorter everytime, because bigger ones are going to be at the end, and so on, and so on...
+        #It is shorter everytime, because bigger ones are going to be at the end, and so on, and so on...
+        for j in range(n-1-i): 
             if a[j] > a[j+1]:
                 swap(a, j, j+1)
                 intercambio = True
@@ -36,34 +38,24 @@ def InsertionSort(a):
 
 
 '''Merge SortO(nlogn)'''
-
-
-def merge(array, left, right):
-    # iteradores
+def mergeSort(a):
+    if(len(a))==1: return
+    middle = len(a) // 2
+    left = a[:middle]
+    right = a[middle:]
+    mergeSort(left)
+    mergeSort(right)
+    merge(left,right,a)
+def merge(left,right,a):
     lfinger = 0
     rfinger = 0
-    for k in range(len(array)):
-        # Pregunta si alguno de los arreglos está desbordado, hace más enfasis en que si todavia quedan elementos en el arreglo izquierdo.
-        if (rfinger >= len(right) or (lfinger < len(left) and left[lfinger] < right[rfinger])):
-            array[k] = left[lfinger]
-            lfinger += 1  # En esta parte hace los asignamientos nuevos al arreglo original, osea intercala las listas
+    for i in range(len(a)):
+        if((rfinger >= len(right)) or (lfinger < len(left) and left[lfinger] < right[rfinger])):
+            a[i] = left[lfinger]
+            lfinger+=1
         else:
-            array[k] = right[rfinger]
-            rfinger += 1
-
-
-def MergeSort(array):
-    if len(array) > 1:  # COND.BASE, Por definición una lista de un elemento ya está ordenada
-        Half_array = len(array) // 2  # Divido a la mitad el arreglo
-        left = array[:Half_array]
-        right = array[Half_array:]
-        MergeSort(left)  # Empezamos a separar el lado izquierdo recursivamente
-        # "                          " derecho  "             "
-        MergeSort(right)
-        # UNIMOS y vamos modificando al original dentro de merge()
-        merge(array, left, right)
-    else:
-        return
+            a[i] = right[rfinger]
+            rfinger+=1
 
 
 '''QuickSort O(nlogn)'''
