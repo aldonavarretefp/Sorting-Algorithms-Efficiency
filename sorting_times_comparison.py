@@ -5,18 +5,20 @@ import sys
 
 
 def swap(arr, index_1, index_2):
-    arr[index_1],arr[index_2] = arr[index_2],arr[index_1] #Python swap.
+    arr[index_1], arr[index_2] = arr[index_2], arr[index_1]  # Python swap.
 
 
 '''Bubble Sort O(n^2)'''
-def bubbleSort(a):  
+
+
+def bubbleSort(a):
     n = len(a)
     intercambio = False
-    #Iterating all array.
-    for i in range(n-1): 
+    # Iterating all array.
+    for i in range(n-1):
         aux = n-1-i
-        #It is shorter everytime, because bigger ones are going to be at the end, and so on, and so on...
-        for j in range(n-1-i): 
+        # It is shorter everytime, because bigger ones are going to be at the end, and so on, and so on...
+        for j in range(n-1-i):
             if a[j] > a[j+1]:
                 swap(a, j, j+1)
                 intercambio = True
@@ -24,8 +26,9 @@ def bubbleSort(a):
             return
 
 
-
 '''Insertion Sort O(n^2)'''
+
+
 def InsertionSort(a):
     n = len(a)
     for i in range(1, n):
@@ -38,52 +41,37 @@ def InsertionSort(a):
 
 
 '''Merge SortO(nlogn)'''
+
+
 def mergeSort(a):
-    if(len(a))==1: return
+    if(len(a)) == 1:
+        return
     middle = len(a) // 2
     left = a[:middle]
     right = a[middle:]
     mergeSort(left)
     mergeSort(right)
-    merge(left,right,a)
-def merge(left,right,a):
+    merge(left, right, a)
+
+
+def merge(left, right, a):
     lfinger = 0
     rfinger = 0
     for i in range(len(a)):
         if((rfinger >= len(right)) or (lfinger < len(left) and left[lfinger] < right[rfinger])):
             a[i] = left[lfinger]
-            lfinger+=1
+            lfinger += 1
         else:
             a[i] = right[rfinger]
-            rfinger+=1
+            rfinger += 1
 
 
 '''QuickSort O(nlogn)'''
 
 
-def Particionar(a, p, r):
-    piv = a[r]  # Agarra un pivote (EL DEL FINAL EN NUESTRO CASO)
-    inMenores = p-1  # El indice menores
-    for j in range(p, r):  # Del primero al ultimo de esa lista
-        if(a[j] <= piv):  # Si el primer elemento es menor que el pivote, intercambio a los menores
-            inMenores += 1  # Ahora si, lo agarro y lo voy a cambiar
-            a[inMenores], a[j] = a[j], a[inMenores]
-    a[inMenores+1], a[r] = a[r], a[inMenores+1]
-    return inMenores+1  # Le regreso el indice de enmedio para que sepa donde va a partir
-
-
-def RandomizedQuickSort(a, p, r):
-    # Es decir, si el indice menor es menor al mayor (Si la lista aun no está vacia)
-    if p < r:
-        '''RANDOMIZED QUICKSORT 
-        Eligo a un numero al azar como pivote y 
-        lo meto al final del arreglo
-        '''
-        i = random.randint(p, r)
-        a[i], a[r] = a[r], a[i]  # swap(randPivot,elementoFinal del arreglo)
-        q = Particionar(a, p, r)  # Le da la micha
-        RandomizedQuickSort(a, p, q-1)  # Reordena y parte la primera mitad
-        RandomizedQuickSort(a, q+1, r)  # Reordena y parte la primera mitad
+def Quicksort(a, l, r):
+    pivot = round(random.random()*len(a))
+    a[pivot], a[r] = a[r], a[pivot]
 
 
 def graficarTiempos(numDatos, tiemposBurbuja, tiemposMerge, tiemposQuick, tiemposInsertion, case):
@@ -139,9 +127,10 @@ def eficienciaAlgoritmos(numDatos, case):
         print("MergeSort(n={}): \tTiempo transcurrido: {} seg".format(n, round(dt, 5)))
 
         t0 = time.monotonic()  # Toma el tiempo (preferentemente largo) que nunca se moverá para atrás ni aunque cambies la configuracion del sistema
-        RandomizedQuickSort(lista_Quick, 0, len(lista_Quick)-1)# La mando a hacer el QuickSort
+        # La mando a hacer el QuickSort
+        RandomizedQuickSort(lista_Quick, 0, len(lista_Quick)-1)
         dt = round(time.monotonic() - t0, 6)
-        tiemposQuick.append(dt) # meto el tiempo marcado
+        tiemposQuick.append(dt)  # meto el tiempo marcado
         print("QuickSort(n={}): \tTiempo transcurrido: {} seg".format(n, round(dt, 5)))
 
         t0 = time.monotonic()
