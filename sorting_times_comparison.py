@@ -67,11 +67,27 @@ def merge(left, right, a):
 
 
 '''QuickSort O(nlogn)'''
+# Recursive
 
 
-def Quicksort(a, l, r):
-    pivot = round(random.random()*len(a))
-    a[pivot], a[r] = a[r], a[pivot]
+def divide(a, l, r):
+    pivot = a[r]
+    i = l-1
+    for j in range(l, r):
+        if(a[j] <= pivot):
+            i += 1
+            a[i], a[j] = a[j], a[i]
+    a[i+1], a[r] = a[r], a[i+1]
+    return i+1
+
+
+def randomized_quicksort(a, l, r):
+    if l < r:
+        pivot = random.randint(l, r)
+        a[pivot], a[r] = a[r], a[pivot]
+        q = divide(a, l, r)
+        randomized_quicksort(a, l, q-1)
+        randomized_quicksort(a, q+1, r)
 
 
 def graficarTiempos(numDatos, tiemposBurbuja, tiemposMerge, tiemposQuick, tiemposInsertion, case):
@@ -121,14 +137,14 @@ def eficienciaAlgoritmos(numDatos, case):
         print("\nBurbuja(n={}): \tTiempo transcurrido: {} seg".format(n, round(dt, 5)))
 
         t0 = time.monotonic()
-        MergeSort(lista_MergeSort)
+        mergeSort(lista_MergeSort)
         dt = round(time.monotonic() - t0, 6)
         tiemposMergeSort.append(dt)
         print("MergeSort(n={}): \tTiempo transcurrido: {} seg".format(n, round(dt, 5)))
 
         t0 = time.monotonic()  # Toma el tiempo (preferentemente largo) que nunca se moverá para atrás ni aunque cambies la configuracion del sistema
         # La mando a hacer el QuickSort
-        RandomizedQuickSort(lista_Quick, 0, len(lista_Quick)-1)
+        randomized_quicksort(lista_Quick, 0, len(lista_Quick)-1)
         dt = round(time.monotonic() - t0, 6)
         tiemposQuick.append(dt)  # meto el tiempo marcado
         print("QuickSort(n={}): \tTiempo transcurrido: {} seg".format(n, round(dt, 5)))
