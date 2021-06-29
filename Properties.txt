@@ -1,6 +1,0 @@
-Quicksort
-worst o(n-2)
-because imagine that you iterate for comparison n-1 times and you make it n times
-
-randomized quicksort
-it tries to avoid the worst case o(n-2) 
