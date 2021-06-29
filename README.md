@@ -1,7 +1,7 @@
 # Sorting-Algorithms-Efficiency
 In this project, I compare 7  of the Sorting algorithms that I learned at 2* Semester of the Faculty.
 
-## Quicksort
+## Quicksort ⏰
 ###### Best case, Average case:   O(nlogn)
 ###### Worst case:                O(n^2)
 This algorithm mainly does the strategy called 'Divide & Conquer', choosing a pivot, 
