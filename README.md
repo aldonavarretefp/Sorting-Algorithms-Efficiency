@@ -8,4 +8,5 @@ This algorithm mainly does the strategy called 'Divide & Conquer', choosing a pi
 and grouping in two sides, the left ones that are the ones smaller than the pivot, and
 the right ones, which are greater than the pivot. In this exercise I decided to make it recursively.
 <br>This sorting algorithm works better with a large data sets.
+<br>Randomized Quicksort is mostly used to avoid the worst case, choosing a random pivot.
 
