@@ -1,5 +1,5 @@
 # Sorting-Algorithms-Efficiency
-In this project, I compare 7  of the Sorting algorithms that I learned at 2* Semester of the Faculty.
+In this project, I compare 7  of the Sorting algorithms that I learned at 2* Semester of College.
 
 ## Quicksort ⏰
 ###### Best case, Average case:   O(nlogn)
