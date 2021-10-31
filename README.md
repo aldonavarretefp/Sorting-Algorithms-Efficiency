@@ -1,5 +1,24 @@
 # Sorting-Algorithms-Efficiency
-In this project, I compare 7  of the Sorting algorithms that I learned at 2* Semester of College.
+## Description
+In this project, I compare 4 of the Sorting algorithms with a large amount of data. I learned all of them in 2nd Semester of College.<br><br>Those are next ones:
+<ul>
+    <li>BubbleSort</li>
+    <li>QuickSort</li>
+    <li>MergeSort</li>
+    <li>InsertionSort</li>
+</ul>
+
+You can clone this repository and run this program with python 3+<br>
+<br>
+You will get in the console something like this:<br><br>
+
+![console img](./img/p4.png)
+### Best case:
+![best case](./img/p1.png)
+### Average case:
+![average case](./img/p2.png)
+### Worst case: 
+![Worst case](./img/p3.png)
 
 ## Quicksort ⏰
 ###### Best case, Average case:   O(nlogn)
